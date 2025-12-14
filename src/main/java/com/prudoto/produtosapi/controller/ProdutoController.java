@@ -18,12 +18,7 @@ public class ProdutoController {
     }
 
     @PostMapping
-    public Produto save(@RequestBody Produto produto) {
-        System.out.println("Produto salvo: " + produto);
-        produtoRepository.save(produto);
-
-        return produto;
-    }
+    public void save(@RequestBody Produto produto) {produtoRepository.save(produto);}
 
     @GetMapping
     public List<Produto> findAll() {
@@ -34,4 +29,7 @@ public class ProdutoController {
     public Produto findById(@PathVariable("id") Long id) {
         return produtoRepository.findById(id).orElse(null);
     }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable("id") Long id){ produtoRepository.deleteById(id);}
 }
