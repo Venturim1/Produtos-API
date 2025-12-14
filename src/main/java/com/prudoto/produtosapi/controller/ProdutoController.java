@@ -30,6 +30,15 @@ public class ProdutoController {
         return produtoRepository.findById(id).orElse(null);
     }
 
+    @GetMapping(params = "nome")
+    public List<Produto> findByNome( @RequestParam String nome) {return produtoRepository.findByNome(nome);}
+
     @DeleteMapping("/{id}")
     public void delete(@PathVariable("id") Long id){ produtoRepository.deleteById(id);}
+
+    @PutMapping("/{id}")
+    public void update(@PathVariable Long id, @RequestBody Produto produto){
+        produto.setId(id);
+        produtoRepository.save(produto);
+    }
 }
