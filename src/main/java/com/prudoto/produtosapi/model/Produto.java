@@ -1,10 +1,23 @@
 package com.prudoto.produtosapi.model;
 
-public class Produto {
+import jakarta.persistence.*;
+import org.springframework.boot.autoconfigure.web.WebProperties;
 
+@Entity
+@Table(name = "pruduto")
+public class Produto {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+
+    @Column(name = "nome")
     private String nome;
+
+    @Column(name = "descricao")
     private String Descricao;
+
+    @Column(name = "preco")
     private Double Preco;
 
     public Long getId() {
